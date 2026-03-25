@@ -12,12 +12,7 @@ const aiRoutes = require("./routes/ai.routes");
 const cors = require("cors");
 
 app.use(express.json());
-app.use(
-  cors({
-    origin: "https://ai-powered-finance-tracker-1-babv.onrender.com",
-    credentials: true,
-  })
-);
+app.use(cors());
 app.use("/api/auth", authRoutes);
 app.use("/api/expenses", expenseRoutes);
 app.use("/api/budgets", budgetRoutes);
