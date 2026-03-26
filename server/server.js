@@ -14,7 +14,7 @@ const cors = require("cors");
 app.use(express.json());
 app.use(
   cors({
-    origin: "https://ai-powered-finance-tracker-1-babv.onrender.com",
+    origin: "https://ai-powered-finance-tracker-xov9.onrender.com",
     credentials: true,
   })
 );
