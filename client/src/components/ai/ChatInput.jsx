@@ -20,7 +20,7 @@ const ChatInput = () => {
       className="mx-auto flex w-full max-w-4xl flex-col gap-3 sm:flex-row sm:items-end"
     >
       <input
-        className="min-h-[48px] w-full flex-1 rounded-2xl border border-gray-300 px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-blue-400 sm:rounded-full"
+        className="min-h-12 w-full flex-1 rounded-2xl border border-gray-300 px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-blue-400 sm:rounded-full"
         value={message}
         onChange={(e) => setMessage(e.target.value)}
         placeholder="Ask about your finances..."
@@ -28,7 +28,7 @@ const ChatInput = () => {
 
       <button
         type="submit"
-        className="min-h-[48px] w-full rounded-2xl bg-blue-600 px-5 py-3 text-sm font-medium text-white transition hover:bg-blue-700 sm:w-auto sm:rounded-full"
+        className="min-h-12 w-full rounded-2xl bg-blue-600 px-5 py-3 text-sm font-medium text-white transition hover:bg-blue-700 sm:w-auto sm:rounded-full"
       >
         Send
       </button>

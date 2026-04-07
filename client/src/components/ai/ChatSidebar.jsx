@@ -13,7 +13,9 @@ const ChatSidebar = ({ onSelectChat }) => {
   return (
     <div className="flex w-full shrink-0 flex-col border-b bg-white md:h-full md:w-72 md:border-b-0 md:border-r">
       <div className="flex flex-col gap-3 border-b p-4">
-        <h2 className="text-base font-semibold text-gray-800 sm:text-lg">Chats</h2>
+        <h2 className="text-base font-semibold text-gray-800 sm:text-lg">
+          Chats
+        </h2>
 
         <button
           onClick={() => navigate("/")}
@@ -28,7 +30,7 @@ const ChatSidebar = ({ onSelectChat }) => {
         {chats.map((chat) => (
           <div
             key={chat._id}
-            className="flex min-w-[220px] items-center justify-between rounded-lg bg-gray-100 p-2 transition hover:bg-gray-200 md:min-w-0"
+            className="flex min-w-55 items-center justify-between rounded-lg bg-gray-100 p-2 transition hover:bg-gray-200 md:min-w-0"
           >
             <div
               className="flex-1 truncate text-sm text-gray-700"
