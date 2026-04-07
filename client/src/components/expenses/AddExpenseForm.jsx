@@ -35,15 +35,15 @@ const AddExpenseForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="bg-white shadow rounded-xl p-6">
-      <h2 className="text-lg font-semibold mb-4">Add Expense</h2>
+    <form onSubmit={handleSubmit} className="rounded-xl bg-white p-4 shadow sm:p-6">
+      <h2 className="mb-4 text-lg font-semibold">Add Expense</h2>
 
       <input
         name="title"
         placeholder="Expense Title"
         value={formData.title}
         onChange={handleChange}
-        className="border p-2 w-full mb-3 rounded"
+        className="mb-3 min-h-[44px] w-full rounded border p-3 text-sm sm:text-base"
       />
 
       <input
@@ -52,14 +52,14 @@ const AddExpenseForm = () => {
         placeholder="Amount"
         value={formData.amount}
         onChange={handleChange}
-        className="border p-2 w-full mb-3 rounded"
+        className="mb-3 min-h-[44px] w-full rounded border p-3 text-sm sm:text-base"
       />
 
       <select
         name="type"
         value={formData.type}
         onChange={handleChange}
-        className="border p-2 w-full mb-3 rounded"
+        className="mb-3 min-h-[44px] w-full rounded border p-3 text-sm sm:text-base"
       >
         <option value="expense">Expense</option>
         <option value="income">Income</option>
@@ -70,11 +70,11 @@ const AddExpenseForm = () => {
         placeholder="Category"
         value={formData.category}
         onChange={handleChange}
-        className="border p-2 w-full mb-3 rounded"
+        className="mb-4 min-h-[44px] w-full rounded border p-3 text-sm sm:text-base"
       />
 
       <button
-        className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 w-full"
+        className="min-h-[44px] w-full rounded bg-blue-600 px-4 py-2 text-sm font-medium text-white hover:bg-blue-700 sm:text-base"
         type="submit"
       >
         Add Expense

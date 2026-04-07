@@ -6,7 +6,7 @@ const ChatMessages = () => {
   const loading = useAIStore((state) => state.loading);
 
   return (
-    <div className="flex flex-col gap-6 max-w-3xl mx-auto">
+    <div className="mx-auto flex w-full max-w-4xl flex-col gap-4 sm:gap-6">
       {messages.map((msg, index) => (
         <div
           key={index}
@@ -15,25 +15,25 @@ const ChatMessages = () => {
           }`}
         >
           <div
-            className={`px-5 py-4 rounded-2xl text-sm leading-relaxed max-w-[80%] shadow-sm ${
+            className={`max-w-[92%] rounded-2xl px-4 py-3 text-sm leading-relaxed shadow-sm sm:max-w-[85%] sm:px-5 sm:py-4 ${
               msg.role === "user"
                 ? "bg-blue-600 text-white"
-                : "bg-white border text-gray-800"
+                : "border bg-white text-gray-800"
             }`}
           >
             {msg.role === "assistant" ? (
-              <div className="prose prose-sm max-w-none">
+              <div className="prose prose-sm max-w-none break-words">
                 <ReactMarkdown>{msg.content}</ReactMarkdown>
               </div>
             ) : (
-              msg.content
+              <p className="break-words whitespace-pre-wrap">{msg.content}</p>
             )}
           </div>
         </div>
       ))}
 
       {loading && (
-        <div className="text-gray-400 text-sm animate-pulse">
+        <div className="px-1 text-sm text-gray-400 animate-pulse">
           AI is thinking...
         </div>
       )}

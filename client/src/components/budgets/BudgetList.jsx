@@ -13,7 +13,7 @@ const BudgetList = () => {
 
   return (
     <div className="space-y-5">
-      <h2 className="text-lg font-semibold">Budget Overview</h2>
+      <h2 className="text-lg font-semibold sm:text-xl">Budget Overview</h2>
 
       {!Array.isArray(budgets) && (
         <p className="text-red-500">Budgets data invalid</p>
@@ -34,39 +34,40 @@ const BudgetList = () => {
           return (
             <div
               key={budget?._id || index}
-              className="bg-white shadow rounded-xl p-6"
+              className="rounded-xl bg-white p-4 shadow sm:p-6"
             >
-              {/* Header */}
-              <div className="flex justify-between items-center mb-2">
-                <h3 className="font-semibold text-gray-700">
+              <div className="mb-3 flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
+                <h3 className="break-words text-base font-semibold text-gray-700 sm:text-lg">
                   {budget?.category || "Unknown"}
                 </h3>
 
-                <div className="flex items-center gap-3">
-                  <span className="text-sm font-semibold">₹{limit}</span>
+                <div className="flex items-center justify-between gap-3 sm:justify-end">
+                  <span className="text-sm font-semibold sm:text-base">
+                    Rs {limit}
+                  </span>
 
-                  {/* Delete Button */}
                   <button
                     onClick={() => {
                       if (window.confirm("Delete this budget?")) {
                         deleteBudget(budget?._id);
                       }
                     }}
-                    className="text-red-500 hover:text-red-700 transition"
+                    className="text-red-500 transition hover:text-red-700"
+                    aria-label={`Delete budget ${budget?.category || "item"}`}
                   >
                     <Trash2 size={18} />
                   </button>
                 </div>
               </div>
 
-              {/* Spent / Remaining */}
-              <div className="flex justify-between text-sm text-gray-500 mb-2">
-                <span>Spent: ₹{spent}</span>
-                <span>Remaining: ₹{remaining}</span>
+              <div className="mb-3 grid grid-cols-1 gap-1 text-sm text-gray-500 sm:grid-cols-2 sm:gap-3">
+                <span className="break-words">Spent: Rs {spent}</span>
+                <span className="break-words sm:text-right">
+                  Remaining: Rs {remaining}
+                </span>
               </div>
 
-              {/* Progress Bar */}
-              <div className="w-full bg-gray-200 h-3 rounded-full">
+              <div className="h-3 w-full rounded-full bg-gray-200">
                 <div
                   className={`h-3 rounded-full ${
                     percent >= 100

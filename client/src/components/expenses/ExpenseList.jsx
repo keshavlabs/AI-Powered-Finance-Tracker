@@ -16,16 +16,18 @@ const ExpenseList = () => {
   }
 
   return (
-    <div className="bg-white shadow rounded-xl p-6 mt-6">
-      <h2 className="text-lg font-semibold mb-4">Transactions</h2>
+    <div className="mt-6 rounded-xl bg-white p-4 shadow sm:p-6 lg:mt-0">
+      <h2 className="mb-4 text-lg font-semibold">Transactions</h2>
 
       {expenses.length === 0 && (
         <p className="text-gray-500">No expenses found</p>
       )}
 
-      {expenses.map((expense) => (
-        <ExpenseItem key={expense._id} expense={expense} />
-      ))}
+      <div className="divide-y divide-gray-100">
+        {expenses.map((expense) => (
+          <ExpenseItem key={expense._id} expense={expense} />
+        ))}
+      </div>
     </div>
   );
 };

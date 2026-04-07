@@ -46,10 +46,10 @@ const AddBudgetForm = () => {
   return (
     <form
       onSubmit={handleSubmit}
-      className="bg-white shadow-md rounded-xl p-6 max-w-md"
+      className="w-full rounded-xl bg-white p-4 shadow-md sm:max-w-md sm:p-6"
     >
       <input
-        className="border p-2 w-full mb-4 rounded"
+        className="mb-4 min-h-[44px] w-full rounded border p-3 text-sm sm:text-base"
         name="category"
         placeholder="Category"
         value={formData.category}
@@ -57,7 +57,7 @@ const AddBudgetForm = () => {
       />
 
       <input
-        className="border p-2 w-full mb-4 rounded"
+        className="mb-4 min-h-[44px] w-full rounded border p-3 text-sm sm:text-base"
         name="amount"
         type="number"
         placeholder="Budget Amount"
@@ -66,7 +66,7 @@ const AddBudgetForm = () => {
       />
 
       <button
-        className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
+        className="min-h-[44px] w-full rounded bg-blue-600 px-4 py-2 text-sm font-medium text-white hover:bg-blue-700 sm:w-auto sm:text-base"
         type="submit"
       >
         Add Budget

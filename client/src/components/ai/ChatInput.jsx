@@ -17,10 +17,10 @@ const ChatInput = () => {
   return (
     <form
       onSubmit={handleSubmit}
-      className="max-w-3xl mx-auto flex items-center gap-2"
+      className="mx-auto flex w-full max-w-4xl flex-col gap-3 sm:flex-row sm:items-end"
     >
       <input
-        className="flex-1 border border-gray-300 rounded-full px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
+        className="min-h-[48px] w-full flex-1 rounded-2xl border border-gray-300 px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-blue-400 sm:rounded-full"
         value={message}
         onChange={(e) => setMessage(e.target.value)}
         placeholder="Ask about your finances..."
@@ -28,7 +28,7 @@ const ChatInput = () => {
 
       <button
         type="submit"
-        className="bg-blue-600 text-white px-4 py-2 rounded-full hover:bg-blue-700 transition"
+        className="min-h-[48px] w-full rounded-2xl bg-blue-600 px-5 py-3 text-sm font-medium text-white transition hover:bg-blue-700 sm:w-auto sm:rounded-full"
       >
         Send
       </button>

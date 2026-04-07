@@ -7,22 +7,22 @@ import BudgetComparision from "../components/budgets/BudgetComparision";
 const Dashboard = () => {
   return (
     <DashboardLayout>
-      <h1 className="text-2xl font-bold mb-6">Dashboard</h1>
+      <h1 className="mb-6 text-2xl font-bold">Dashboard</h1>
 
       <SummaryCards />
 
-      <div className="grid grid-cols-2 gap-6 mb-8">
-        <div className="bg-white shadow rounded-xl p-6">
+      <div className="mb-8 grid grid-cols-1 gap-6 xl:grid-cols-2">
+        <div className="rounded-xl bg-white p-6 shadow">
           <CategoryChart />
         </div>
 
-        <div className="bg-white shadow rounded-xl p-6">
+        <div className="rounded-xl bg-white p-6 shadow">
           <MonthlyChart />
         </div>
       </div>
 
-      <div className="bg-white shadow rounded-xl p-6">
-        <h2 className="text-lg font-semibold mb-4">Budget vs Expenses</h2>
+      <div className="rounded-xl bg-white p-4 shadow sm:p-6">
+        <h2 className="mb-4 text-lg font-semibold">Budget vs Expenses</h2>
 
         <BudgetComparision />
       </div>

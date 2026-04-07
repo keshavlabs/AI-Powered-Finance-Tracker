@@ -7,26 +7,21 @@ const AIChat = () => {
   const loadChat = useAIStore((state) => state.loadChat);
 
   return (
-    <div className="flex h-screen bg-gray-100">
-      {/* Sidebar */}
+    <div className="flex min-h-screen flex-col bg-gray-100 md:h-screen md:flex-row">
       <ChatSidebar onSelectChat={loadChat} />
 
-      {/* Main Chat */}
-      <div className="flex flex-col flex-1">
-        {/* Header */}
-        <div className="p-4 border-b bg-white shadow-sm">
-          <h1 className="text-xl font-semibold text-gray-700">
-            AI Financial Assistant 💰
+      <div className="flex min-h-0 flex-1 flex-col">
+        <div className="border-b bg-white px-4 py-4 shadow-sm sm:px-6">
+          <h1 className="text-lg font-semibold text-gray-700 sm:text-xl">
+            AI Financial Assistant
           </h1>
         </div>
 
-        {/* Messages */}
-        <div className="flex-1 overflow-y-auto px-6 py-4">
+        <div className="flex-1 overflow-y-auto px-4 py-4 sm:px-6">
           <ChatMessages />
         </div>
 
-        {/* Input */}
-        <div className="bg-white border-t p-4">
+        <div className="border-t bg-white px-4 py-4 sm:px-6">
           <ChatInput />
         </div>
       </div>

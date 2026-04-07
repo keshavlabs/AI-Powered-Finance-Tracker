@@ -22,8 +22,7 @@ const BudgetComparison = () => {
       {data.map((item) => {
         const spent = item.spent || 0;
         const budget = item.limitAmount || 0;
-
-        const percent = Math.min((spent / budget) * 100, 100);
+        const percent = budget ? Math.min((spent / budget) * 100, 100) : 0;
 
         const barColor =
           percent >= 100
@@ -33,21 +32,24 @@ const BudgetComparison = () => {
             : "bg-green-500";
 
         return (
-          <div key={item.category} className="bg-white shadow rounded-xl p-5">
-            <div className="flex justify-between mb-2">
-              <h3 className="font-semibold text-gray-700">{item.category}</h3>
+          <div
+            key={item.category}
+            className="rounded-xl border border-gray-100 bg-white p-4 shadow sm:p-5"
+          >
+            <div className="mb-3 flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
+              <h3 className="text-sm font-semibold text-gray-700 sm:text-base">
+                {item.category}
+              </h3>
 
-              <span className="text-sm text-gray-500">
-                {percent.toFixed(0)}%
-              </span>
+              <span className="text-sm text-gray-500">{percent.toFixed(0)}%</span>
             </div>
 
-            <div className="flex justify-between text-sm text-gray-500 mb-2">
-              <span>Budget: ₹{budget}</span>
-              <span>Spent: ₹{spent}</span>
+            <div className="mb-3 grid grid-cols-1 gap-1 text-sm text-gray-500 sm:grid-cols-2 sm:gap-3">
+              <span className="break-words">Budget: Rs {budget}</span>
+              <span className="break-words sm:text-right">Spent: Rs {spent}</span>
             </div>
 
-            <div className="w-full bg-gray-200 h-3 rounded-full">
+            <div className="h-3 w-full rounded-full bg-gray-200">
               <div
                 className={`${barColor} h-3 rounded-full`}
                 style={{ width: `${percent}%` }}

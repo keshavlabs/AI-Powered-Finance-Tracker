@@ -62,34 +62,32 @@ const MonthlyChart = () => {
   }, []);
 
   return (
-    <div className="bg-white shadow rounded-xl p-6">
-      <div className="flex justify-between items-center mb-4">
-        <h2 className="text-lg font-semibold">Income vs Expense Trend</h2>
+    <div className="rounded-xl bg-white p-4 shadow sm:p-6">
+      <div className="mb-4 flex items-center justify-between">
+        <h2 className="text-base font-semibold sm:text-lg">
+          Income vs Expense Trend
+        </h2>
       </div>
 
-      <ResponsiveContainer width="100%" height={320}>
-        <BarChart data={data}>
-          <CartesianGrid strokeDasharray="3 3" />
-
-          <XAxis dataKey="month" />
-
-          <YAxis />
-
-          <Tooltip
-            contentStyle={{
-              borderRadius: "10px",
-              border: "none",
-              boxShadow: "0 2px 10px rgba(0,0,0,0.1)",
-            }}
-          />
-
-          <Legend />
-
-          <Bar dataKey="income" fill="#22c55e" radius={[6, 6, 0, 0]} />
-
-          <Bar dataKey="expense" fill="#ef4444" radius={[6, 6, 0, 0]} />
-        </BarChart>
-      </ResponsiveContainer>
+      <div className="h-[300px] sm:h-[340px]">
+        <ResponsiveContainer width="100%" height="100%">
+          <BarChart data={data} margin={{ top: 8, right: 8, left: -16, bottom: 0 }}>
+            <CartesianGrid strokeDasharray="3 3" />
+            <XAxis dataKey="month" tick={{ fontSize: 12 }} />
+            <YAxis tick={{ fontSize: 12 }} width={40} />
+            <Tooltip
+              contentStyle={{
+                borderRadius: "10px",
+                border: "none",
+                boxShadow: "0 2px 10px rgba(0,0,0,0.1)",
+              }}
+            />
+            <Legend wrapperStyle={{ fontSize: "12px" }} />
+            <Bar dataKey="income" fill="#22c55e" radius={[6, 6, 0, 0]} />
+            <Bar dataKey="expense" fill="#ef4444" radius={[6, 6, 0, 0]} />
+          </BarChart>
+        </ResponsiveContainer>
+      </div>
     </div>
   );
 };

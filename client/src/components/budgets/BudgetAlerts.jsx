@@ -20,13 +20,18 @@ const BudgetAlerts = () => {
   if (!alerts.length) return null;
 
   return (
-    <div
-      style={{ background: "#fff3cd", padding: "15px", marginBottom: "20px" }}
-    >
-      <h3>Budget Alerts</h3>
+    <div className="mb-5 rounded-xl border border-yellow-200 bg-yellow-50 p-4 sm:p-5">
+      <h3 className="mb-3 text-base font-semibold text-yellow-900 sm:text-lg">
+        Budget Alerts
+      </h3>
 
       {alerts.map((alert, index) => (
-        <div key={index}>⚠ {alert.message}</div>
+        <div
+          key={index}
+          className="mb-2 break-words text-sm text-yellow-800 last:mb-0 sm:text-base"
+        >
+          Warning: {alert.message}
+        </div>
       ))}
     </div>
   );

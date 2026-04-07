@@ -37,27 +37,32 @@ const CategoryChart = () => {
   }, []);
 
   return (
-    <div className="bg-white shadow rounded-xl p-6">
-      <h2 className="text-lg font-semibold mb-4">Category-wise Expenses</h2>
+    <div className="rounded-xl bg-white p-4 shadow sm:p-6">
+      <h2 className="mb-4 text-base font-semibold sm:text-lg">
+        Category-wise Expenses
+      </h2>
 
-      <ResponsiveContainer width="100%" height={300}>
-        <PieChart>
-          <Pie
-            data={data}
-            dataKey="amount"
-            nameKey="category"
-            outerRadius={110}
-            label
-          >
-            {data.map((entry, index) => (
-              <Cell key={index} fill={COLORS[index % COLORS.length]} />
-            ))}
-          </Pie>
+      <div className="h-[280px] sm:h-[320px]">
+        <ResponsiveContainer width="100%" height="100%">
+          <PieChart>
+            <Pie
+              data={data}
+              dataKey="amount"
+              nameKey="category"
+              outerRadius={90}
+              labelLine={false}
+              label={({ percent }) => `${(percent * 100).toFixed(0)}%`}
+            >
+              {data.map((entry, index) => (
+                <Cell key={index} fill={COLORS[index % COLORS.length]} />
+              ))}
+            </Pie>
 
-          <Tooltip />
-          <Legend />
-        </PieChart>
-      </ResponsiveContainer>
+            <Tooltip />
+            <Legend wrapperStyle={{ fontSize: "12px" }} />
+          </PieChart>
+        </ResponsiveContainer>
+      </div>
     </div>
   );
 };
