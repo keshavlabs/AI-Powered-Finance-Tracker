@@ -33,10 +33,10 @@ const calculateSummary = async (userID) => {
   }
 };
 
-const calculateCategorySummary = async (userID, type) => {
+const calculateCategorySummary = async (userID, type = "expense") => {
   const records = await Expense.find({
     user: userID,
-    type: "expense",
+    type: type,
   });
 
   const categoryTotals = {};
@@ -58,7 +58,7 @@ const calculateCategorySummary = async (userID, type) => {
   }));
 };
 
-const calculateMonthlySummary = async (userID, type) => {
+const calculateMonthlySummary = async (userID) => {
   const records = await Expense.aggregate([
     {
       $match: {

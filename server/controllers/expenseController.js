@@ -102,14 +102,27 @@ const getMonthlySummary = async (req, res) => {
 };
 
 const deleteExpense = async (req, res) => {
-  const { id } = req.params;
+  try {
+    const { id } = req.params;
 
-  await Expense.findOneAndDelete({
-    _id: id,
-    user: req.user,
-  });
+    const deleted = await Expense.findOneAndDelete({
+      _id: id,
+      user: req.user,
+    });
 
-  res.json({ message: "Expense deleted" });
+    if (!deleted) {
+      return res.status(404).json({
+        message: "Expense not found",
+      });
+    }
+
+    res.json({ message: "Expense deleted" });
+  } catch (error) {
+    res.status(500).json({
+      message: "Server Error",
+      error: error.message,
+    });
+  }
 };
 
 module.exports = {

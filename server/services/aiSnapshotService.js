@@ -4,15 +4,17 @@ const {
   calculateCategorySummary,
 } = require("../services/expenseService");
 
-const snapshotCache = {};
+const snapshotCache = new Map();
+const CACHE_TTL_MS = 60 * 1000;
+const MAX_CACHE_SIZE = 200;
 
 const generateFinancialSnapshot = async (userId, month, year) => {
   const cacheKey = `${userId}-${month}-${year}`;
 
-  if (snapshotCache[cacheKey]) {
-    const cached = snapshotCache[cacheKey];
+  if (snapshotCache.has(cacheKey)) {
+    const cached = snapshotCache.get(cacheKey);
 
-    if (Date.now() - cached.timestamp < 60000) {
+    if (Date.now() - cached.timestamp < CACHE_TTL_MS) {
       return cached.data;
     }
   }
@@ -28,10 +30,10 @@ const generateFinancialSnapshot = async (userId, month, year) => {
     budgetStatus: budgetComparison,
   };
 
-  snapshotCache[cacheKey] = {
+  snapshotCache.set(cacheKey, {
     data: snapshot,
     timestamp: Date.now(),
-  };
+  });
 
   return snapshot;
 };
