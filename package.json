@@ -1,6 +1,15 @@
 {
-  "dependencies": {
-    "groq-sdk": "^0.37.0",
-    "openai": "^6.25.0"
+  "name": "ai-powered-finance-tracker",
+  "version": "1.0.0",
+  "description": "AI-powered personal finance tracker",
+  "private": true,
+  "workspaces": [
+    "client",
+    "server"
+  ],
+  "scripts": {
+    "start:server": "cd server && npm start",
+    "start:client": "cd client && npm run dev",
+    "install:all": "npm install && cd server && npm install && cd ../client && npm install"
   }
 }

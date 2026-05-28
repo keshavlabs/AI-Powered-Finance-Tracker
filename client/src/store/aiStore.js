@@ -21,7 +21,7 @@ const useAIStore = create((set) => ({
     });
   },
 
-  sendMessage: async (message) => {
+  sendMessage: async (message, month, year) => {
     set((state) => ({
       messages: [...state.messages, { role: "user", content: message }],
       loading: true,
@@ -33,6 +33,8 @@ const useAIStore = create((set) => ({
       const response = await aiService.sendMessage({
         chatId: state.chatId,
         message,
+        month,
+        year,
       });
 
       set((state) => ({
@@ -43,9 +45,12 @@ const useAIStore = create((set) => ({
         ],
         loading: false,
       }));
+
+      const { fetchChats } = useAIStore.getState();
+      if (!state.chatId) await fetchChats();
     } catch (error) {
       set({ loading: false });
-      console.error(error);
+      console.error("Failed to send message:", error);
     }
   },
 
@@ -59,7 +64,7 @@ const useAIStore = create((set) => ({
         chatId: state.chatId === id ? null : state.chatId,
       }));
     } catch (error) {
-      console.error(error);
+      console.error("Failed to delete chat:", error);
     }
   },
 }));
